@@ -1,5 +1,7 @@
 package demo.list.list.test;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -11,6 +13,7 @@ import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
+@Service
 public class DepartamentServiceImpl implements DepartamentService {
 
     private  final EmployeeService employeeService;

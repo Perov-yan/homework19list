@@ -18,8 +18,8 @@ public class EmployeeControler {
     }
 
     @GetMapping(path = "/add")
-    public String add(@RequestParam String firstName, @RequestParam String lastName) {
-        Employee result = employeeService.add(firstName,lastName);
+    public String add(@RequestParam String firstName, @RequestParam String lastName, @RequestParam int departamentId, @RequestParam int salary) {
+        Employee result = employeeService.add(firstName,lastName,departamentId,salary);
         return  generateMessage(result, " успешно создан");
     }
 
@@ -34,7 +34,7 @@ public class EmployeeControler {
         return employeeService.find(firstName, lastName);
     }
 
-    @GetMapping
+    @GetMapping(path = "/find-all")
     public Collection<Employee> findAll(){
         return employeeService.findAll();
     }

@@ -14,8 +14,8 @@ public class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    public Employee add(String firstName, String lastName){
-        Employee newEmployee = new Employee(firstName,lastName);
+    public Employee add(String firstName, String lastName, int departamentId, int salary){
+        Employee newEmployee = new Employee(firstName,lastName, departamentId, salary);
 
         if (employees.containsKey(firstName + lastName)){
          throw new EmployeeExistsExeption();

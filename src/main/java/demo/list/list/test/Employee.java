@@ -6,14 +6,14 @@ public class Employee {
     private final String firstName;
     private final String lastName;
 
-    private int salary;
     private int departamentId;
+    private int salary;
 
-    public Employee(String firstName, String lastName, int salary, int departamentId) {
+    public Employee(String firstName, String lastName, int departamentId, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.salary = salary;
         this.departamentId = departamentId;
+        this.salary = salary;
     }
 
     public String getFirstName() {
@@ -24,14 +24,6 @@ public class Employee {
         return lastName;
     }
 
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
     public int getDepartamentId() {
         return departamentId;
     }
@@ -40,27 +32,30 @@ public class Employee {
         this.departamentId = departamentId;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (object == this) {
             return true;
         }
-        if (!(object instanceof Employee)) return false;
         Employee employee = (Employee) object;
-        return departamentId == employee.departamentId && firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
+        return firstName.equals(employee.firstName) && lastName == employee.lastName;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, departamentId);
+        return java.util.Objects.hash(firstName, lastName);
     }
 
     @Override
     public String toString() {
-        return String.format("Сотрудник %s %s из отдела № %d с зарплатой %d",
-                lastName,
-                firstName,
-                departamentId,
-                salary) ;
+        return "Сотрудник " + firstName + " " + lastName ;
     }
 }
