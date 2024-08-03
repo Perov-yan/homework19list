@@ -6,9 +6,14 @@ public class Employee {
     private final String firstName;
     private final String lastName;
 
-    public Employee(String firstName, String lastName) {
+    private int salary;
+    private int departamentId;
+
+    public Employee(String firstName, String lastName, int salary, int departamentId) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.salary = salary;
+        this.departamentId = departamentId;
     }
 
     public String getFirstName() {
@@ -19,22 +24,43 @@ public class Employee {
         return lastName;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getDepartamentId() {
+        return departamentId;
+    }
+
+    public void setDepartamentId(int departamentId) {
+        this.departamentId = departamentId;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (object == this) {
             return true;
         }
+        if (!(object instanceof Employee)) return false;
         Employee employee = (Employee) object;
-        return firstName.equals(employee.firstName) && lastName == employee.lastName;
+        return departamentId == employee.departamentId && firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(firstName, lastName);
+        return Objects.hash(firstName, lastName, departamentId);
     }
 
     @Override
     public String toString() {
-        return "Сотрудник " + firstName + " " + lastName ;
+        return String.format("Сотрудник %s %s из отдела № %d с зарплатой %d",
+                lastName,
+                firstName,
+                departamentId,
+                salary) ;
     }
 }
